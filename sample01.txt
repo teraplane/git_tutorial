@@ -1,0 +1,109 @@
+			알아두면 유용한 command-line 명령어 list
+
+1. Machine Name 관련
+       hostname - show or set the system's host name
+       domainname - show or set the system's NIS/YP domain name
+       dnsdomainname - show the system's DNS domain name
+       nisdomainname - show or set system's NIS/YP domain name
+       ypdomainname - show or set the system's NIS/YP domain name
+       nodename - show or set the system's DECnet node name
+       
+2. User/계정 정보 관련
+       last, lastb - show listing of last logged in users
+       w - Show who is logged on and what they are doing.
+
+3. System monitoring 관련
+       iostat  -  Report Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions.
+       vmstat - Report virtual memory statistics
+       sar  -  Collect,  report, or save system activity information.
+       strace - trace system calls and signals
+             strace -f /nable/vrrp/current/bin/vrrpd -c /nable/vrrp/current/conf/ -g -x
+             strace -f -e trace=process /nable/vrrp/current/bin/vrrpd -c /nable/vrrp/current/conf/ -g -x
+       sysctl - configure kernel parameters at runtime
+             sysctl -a
+       ifstat - ifstat is a tool to report network interfaces bandwith just like vmstat/iostat do for other system counters.
+       iptraf - IPTraf is a console-based network statistics utility for Linux. It gathers a variety of figures such as TCP connection packet and byte counts, interface statistics and activity indicators, TCP/UDP traffic breakdowns, and LAN station packet and byte counts.
+       dstat - Dstat is a versatile replacement for vmstat, iostat, netstat and ifstat. Dstat overcomes some of their limitations and adds some extra features, more counters and flexibility. Dstat is handy for monitoring systems during performance tuning tests, benchmarks or troubleshooting.
+       htop - an interactive process viewer for Linux
+       ss - another utility to investigate sockets
+            ss -ltim -> Didplay TCP listening socket information with interal TCP info. and socket memory usage(including sk_backlog length)
+       nstat - network statistics tools. -> 지난 번 조회 이후 변동된 수치만 확인하고자 할 때 유용함.
+
+4. Application 실행/분석 관련 
+       ldd - print shared library dependencies
+       ldconfig - configure dynamic linker run-time bindings
+       nohup  - run a command immune to hangups, with output to a non-tty (logout 시에도 프로그램 계속실행)
+       strace - trace system calls and signals
+       strings  -  print  the  strings of printable characters in files.
+       lsof - list open files
+       readelf - Displays information about ELF files.
+       pert-top - System profiling tool
+            perf top -v -p <PID> -> Profile events on existing Process ID vervosely (comma separated list).
+
+5. 개발 관련
+       nm - list symbols from object files
+
+6. 화면제어 관련
+       screen - screen manager with VT100/ANSI terminal emulation
+              screen -S main
+              screen -rd main
+
+7. Disk 관리 관련
+	tune2fs - adjust  tunable  filesystem  parameters  on second extended filesystems
+              tune2fs -l /dev/sda
+
+8. Network 설정 관련
+	ifenslave - Attach and detach slave network devices to a bonding device.
+	mii-tool  -  view,  manipulate media-independent interface status (mii-tool은 Gigabit Ethernet NIC를 제대로 지원하지 못함. 대신 ethtool을 사용할 것)
+	ethtool - Display or change ethernet card settings 
+	ip - TCP/IP interface configuration and routing utility
+		ip link
+		ip addr
+		ip maddr
+	rpcinfo - report RPC information
+		rpcinfo -u localhost nfs
+	nfsstat - print NFS statistics
+	netstat  -  Print  network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+		netstat --inet6 -r
+		netstat -A inet6 -r
+		netstat -r
+
+9. Process 관리 관련
+	pgrep,  pkill  -  look  up  or signal processes based on name and other attributes
+	chrt - manipulate real-time attributes of a process
+		chrt(1)  sets  or  retrieves  the real-time scheduling attributes of an
+		existing PID or runs COMMAND with the given  attributes.   Both  policy
+		(one of SCHED_OTHER, SCHED_FIFO, SCHED_RR, or SCHED_BATCH) and priority
+		can be set and retrieved.
+	taskset - retrieve or set a process's CPU affinity
+	
+10. System 설정 관련
+	setup (Redhat Linux) - 시스템의 구성을 확인하고 변경할 수 있다.
+		X설정
+		네트워크 설정
+		방화벽 설정
+		시간대 설정
+		시스템 서비스
+		인증 설정
+		키보드 설정
+
+11 Audit 관련
+  ausearch - a tool to query audit daemon logs
+  aureport - a tool that produces summary reports of audit daemon logs
+  auditctl - a utility to assist controlling the kernel’s audit system
+
+12 Network 통신 관련
+     nc - arbitrary TCP and UDP connections and listens (TCP/UDP를 통한 임의의 data 송수신 시 사용 가능)
+     	netcat serveraddress serverport < MY_FILE
+
+13. LVM(Logical Volume Manager) 관련
+       pvdisplay - display attributes of a physical volume
+       vgdisplay - display attributes of volume groups
+       lvdisplay - display attributes of a logical volume
+
+14. H/W 구성 관련
+	lscpu - CPU architecture information helper
+	lspci - list all PCI devices
+		lspci -t -v -nn 	-> PCI device ID/name, 연결상태(tree) 확인
+	biosdecode - BIOS information decoder
+	dmidecode - DMI table decoder
